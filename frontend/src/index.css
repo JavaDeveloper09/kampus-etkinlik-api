@@ -1,0 +1,58 @@
+/* Orhan Öztekin 2416501017 */
+:root {
+  --ton: 127;
+  --renk-ana: hsl(var(--ton) 65% 32%);
+  --renk-ana-koyu: hsl(var(--ton) 65% 24%);
+  --renk-ana-acik: hsl(var(--ton) 45% 92%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --renk-kart: #ffffff;
+  --renk-metin: #222222;
+  --renk-gri: #5f5f5f;
+  --renk-cizgi: #d6d6d6;
+  --renk-hata: #c62828;
+  --renk-hata-zemin: #fff4f4;
+  --renk-vurgu: #5b2fc0;
+
+  --font: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --bosluk-s: 0.5rem;
+  --bosluk-m: 1rem;
+  --bosluk-l: 1.5rem;
+  --kose: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--renk-ana);
+}
