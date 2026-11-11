@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Güncelle · Kampüs Etkinlikleri</title>
+</head>
+<body>
+  <header>
+    <h1>Etkinlik Güncelle</h1>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-detay.html">Detay</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="etkinlik-detay.html" method="get">
+      <p>
+        <label for="title">Etkinlik Adı</label><br>
+        <input type="text" id="title" name="title" value="Temel Algoritma Öğrenimi" required>
+      </p>
+
+      <p>
+        <label for="category">Kategori</label><br>
+        <select id="category" name="category" required>
+          <option value="">Seçiniz</option>
+          <option value="Seminer" selected>Seminer</option>
+          <option value="Atölye">Atölye</option>
+          <option value="Söyleşi">Söyleşi</option>
+          <option value="Yarışma">Yarışma</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="date">Tarih</label><br>
+        <input type="date" id="date" name="date" value="2026-10-12" required>
+      </p>
+
+      <p>
+        <label for="time">Saat</label><br>
+        <input type="time" id="time" name="time" value="14:00" required>
+      </p>
+
+      <p>
+        <label for="location">Yer</label><br>
+        <input type="text" id="location" name="location" value="B Blok Konferans Salonu" required>
+      </p>
+
+      <p>
+        <label for="description">Açıklama</label><br>
+        <textarea id="description" name="description" rows="4" cols="40" required>Algoritma ve veri yapılarına giriş semineri. Temel sıralama ve arama algoritmaları örneklerle anlatılacak.</textarea>
+      </p>
+
+      <button type="submit">Güncelle</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>İbrahim Eren Yayla · 2416501088 · 2026</p>
+  </footer>
+</body>
+</html>
