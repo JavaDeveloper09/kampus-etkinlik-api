@@ -7,6 +7,8 @@
   --font: system-ui, sans-serif;
   --bosluk-m: 1rem;
   --kose: 8px;
+    --renk-hata: hsl(0 75% 40%);
+  --renk-hata-zemin: hsl(0 90% 96%);
 }
 
 * {
@@ -148,4 +150,68 @@ img {
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
+}
+form {
+  max-width: 500px;
+}
+
+form p {
+  margin: 0 0 var(--bosluk-m);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.6rem;
+  background: white;
+  border: 1px solid hsl(var(--ton) 20% 70%);
+  border-radius: var(--kose);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--renk-ana);
+  outline-offset: 1px;
+}
+
+:user-invalid {
+  border: 2px solid var(--renk-hata);
+  background: var(--renk-hata-zemin);
+}
+
+form p:has(:user-invalid)::after {
+  content: "Bu alan zorunlu.";
+  display: block;
+  color: var(--renk-hata);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: white;
+  background: var(--renk-ana);
+  border: none;
+  border-radius: var(--kose);
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.1);
 }
