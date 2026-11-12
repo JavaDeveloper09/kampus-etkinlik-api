@@ -59,3 +59,43 @@ footer {
   padding: var(--bosluk-m);
   font-size: 0.875rem;
 }
+.kartlar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bosluk-m);
+}
+
+.kart {
+  background: white;
+  border: 1px solid hsl(var(--ton) 30% 85%);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+}
+
+.kart h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.kart p {
+  margin: 0 0 0.5rem;
+}
+
+.kart a,
+main p a {
+  color: var(--renk-ana);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (min-width: 700px) {
+  .kartlar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .kartlar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
