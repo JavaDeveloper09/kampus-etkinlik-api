@@ -1,0 +1,14 @@
+/* İbrahim Eren Yayla — 2416501088 */
+:root {
+  --no: 2416501088;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: system-ui, sans-serif;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+}
+
+body {
+  font-family: var(--font);
+}
