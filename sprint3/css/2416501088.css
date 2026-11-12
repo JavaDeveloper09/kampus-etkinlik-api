@@ -7,8 +7,10 @@
   --font: system-ui, sans-serif;
   --bosluk-m: 1rem;
   --kose: 8px;
-    --renk-hata: hsl(0 75% 40%);
+  --renk-hata: hsl(0 75% 40%);
   --renk-hata-zemin: hsl(0 90% 96%);
+  --renk-basari: hsl(140 60% 28%);
+  --renk-basari-zemin: hsl(140 60% 95%);
 }
 
 * {
@@ -22,6 +24,8 @@ body {
   background: var(--renk-zemin);
   color: hsl(var(--ton) 20% 15%);
 }
+
+/* Başlık ve menü */
 
 header {
   background: var(--renk-ana);
@@ -61,6 +65,9 @@ footer {
   padding: var(--bosluk-m);
   font-size: 0.875rem;
 }
+
+/* Kartlar */
+
 .kartlar {
   display: grid;
   grid-template-columns: 1fr;
@@ -101,6 +108,9 @@ main p a {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Detay sayfası */
+
 img {
   max-width: 100%;
   height: auto;
@@ -151,6 +161,9 @@ img {
     align-items: start;
   }
 }
+
+/* Formlar */
+
 form {
   max-width: 500px;
 }
@@ -187,13 +200,12 @@ textarea:focus {
   outline-offset: 1px;
 }
 
-:user-invalid {
+[aria-invalid="true"] {
   border: 2px solid var(--renk-hata);
   background: var(--renk-hata-zemin);
 }
 
-form p:has(:user-invalid)::after {
-  content: "Bu alan zorunlu.";
+.hata {
   display: block;
   color: var(--renk-hata);
   font-size: 0.875rem;
@@ -215,6 +227,14 @@ button {
 button:hover {
   filter: brightness(1.1);
 }
+
+#form-mesaj {
+  margin-top: var(--bosluk-m);
+  max-width: 500px;
+}
+
+/* Filtre */
+
 .filtre {
   display: grid;
   gap: var(--bosluk-m);
@@ -227,6 +247,9 @@ button:hover {
     grid-template-columns: 2fr 1fr;
   }
 }
+
+/* Mesaj kutuları */
+
 .hata-kutusu {
   padding: var(--bosluk-m);
   border: 2px solid var(--renk-hata);
@@ -238,4 +261,18 @@ button:hover {
 .hata-kutusu a {
   color: var(--renk-hata);
   font-weight: 600;
+}
+
+.basari-kutusu {
+  padding: var(--bosluk-m);
+  border: 2px solid var(--renk-basari);
+  border-radius: var(--kose);
+  background: var(--renk-basari-zemin);
+  color: var(--renk-basari);
+}
+
+.basari-kutusu pre {
+  white-space: pre-wrap;
+  overflow-x: auto;
+  color: hsl(var(--ton) 20% 15%);
 }
