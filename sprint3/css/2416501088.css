@@ -1,0 +1,217 @@
+/* İbrahim Eren Yayla — 2416501088 */
+:root {
+  --no: 2416501088;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: system-ui, sans-serif;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+    --renk-hata: hsl(0 75% 40%);
+  --renk-hata-zemin: hsl(0 90% 96%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  line-height: 1.5;
+  background: var(--renk-zemin);
+  color: hsl(var(--ton) 20% 15%);
+}
+
+header {
+  background: var(--renk-ana);
+  color: white;
+  padding: var(--bosluk-m);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--bosluk-m);
+}
+
+footer {
+  text-align: center;
+  padding: var(--bosluk-m);
+  font-size: 0.875rem;
+}
+.kartlar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--bosluk-m);
+}
+
+.kart {
+  background: white;
+  border: 1px solid hsl(var(--ton) 30% 85%);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+}
+
+.kart h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.kart p {
+  margin: 0 0 0.5rem;
+}
+
+.kart a,
+main p a {
+  color: var(--renk-ana);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (min-width: 700px) {
+  .kartlar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .kartlar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detay {
+  display: grid;
+  gap: var(--bosluk-m);
+}
+
+.detay figure {
+  margin: 0;
+}
+
+.detay img {
+  border-radius: var(--kose);
+}
+
+.detay figcaption {
+  font-style: italic;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.kunye {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0 0 var(--bosluk-m);
+  padding: var(--bosluk-m);
+  background: white;
+  border: 1px solid hsl(var(--ton) 30% 85%);
+  border-radius: var(--kose);
+}
+
+.kunye dt {
+  font-weight: 600;
+}
+
+.kunye dd {
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .detay {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+form {
+  max-width: 500px;
+}
+
+form p {
+  margin: 0 0 var(--bosluk-m);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.6rem;
+  background: white;
+  border: 1px solid hsl(var(--ton) 20% 70%);
+  border-radius: var(--kose);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--renk-ana);
+  outline-offset: 1px;
+}
+
+:user-invalid {
+  border: 2px solid var(--renk-hata);
+  background: var(--renk-hata-zemin);
+}
+
+form p:has(:user-invalid)::after {
+  content: "Bu alan zorunlu.";
+  display: block;
+  color: var(--renk-hata);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: white;
+  background: var(--renk-ana);
+  border: none;
+  border-radius: var(--kose);
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
