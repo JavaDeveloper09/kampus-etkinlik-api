@@ -9,6 +9,53 @@
   --kose: 8px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: var(--font);
+  line-height: 1.5;
+  background: var(--renk-zemin);
+  color: hsl(var(--ton) 20% 15%);
+}
+
+header {
+  background: var(--renk-ana);
+  color: white;
+  padding: var(--bosluk-m);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--bosluk-m);
+}
+
+footer {
+  text-align: center;
+  padding: var(--bosluk-m);
+  font-size: 0.875rem;
 }
