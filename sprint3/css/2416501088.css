@@ -215,3 +215,15 @@ button {
 button:hover {
   filter: brightness(1.1);
 }
+.filtre {
+  display: grid;
+  gap: var(--bosluk-m);
+  max-width: none;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 700px) {
+  .filtre {
+    grid-template-columns: 2fr 1fr;
+  }
+}

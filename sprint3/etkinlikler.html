@@ -19,6 +19,19 @@
 
   <main>
        <h2>Tüm Etkinlikler</h2>
+           <form id="filtre-formu" class="filtre">
+      <div>
+        <label for="arama">Etkinlik ara</label>
+        <input type="search" id="arama" placeholder="algoritma, seminer...">
+      </div>
+      <div>
+        <label for="kategori-filtre">Kategori</label>
+        <select id="kategori-filtre">
+          <option value="">Tümü</option>
+        </select>
+      </div>
+    </form>
+    <p id="sonuc"></p>
     
            <section id="etkinlik-listesi" class="kartlar"></section>
   </main>
