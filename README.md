@@ -18,3 +18,14 @@ Sprint 1'deki HTML'e CSS giydirildi: `sprint2/` klasöründe, stil dosyası `spr
 - Formlarda hatalı alan kırmızı
 
 Canlı adres: https://kampus-etkinlik-api-sprint2.vercel.app
+
+## Sprint 3: JavaScript ve DOM
+
+Sayfalar tek bir veri dosyasından üretiliyor: `sprint3/` klasöründe.
+
+- `js/data.js`: 6 etkinlik
+- `js/event-list.js`: kartları üretir; ana sayfada yaklaşan 2 etkinlik, liste sayfasında arama ve kategori filtresi
+- `js/event-detail.js`: `?id=` ile doğru etkinliği açar, bulunamazsa hata kutusu
+- `js/event-form.js`: ekleme ve güncelleme formunun doğrulaması; başarıda oluşan nesneyi gösterir
+
+Canlı adres: https://kampus-etkinlik-api-sprint3.vercel.app
