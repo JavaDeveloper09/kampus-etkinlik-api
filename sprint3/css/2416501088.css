@@ -227,3 +227,15 @@ button:hover {
     grid-template-columns: 2fr 1fr;
   }
 }
+.hata-kutusu {
+  padding: var(--bosluk-m);
+  border: 2px solid var(--renk-hata);
+  border-radius: var(--kose);
+  background: var(--renk-hata-zemin);
+  color: var(--renk-hata);
+}
+
+.hata-kutusu a {
+  color: var(--renk-hata);
+  font-weight: 600;
+}
