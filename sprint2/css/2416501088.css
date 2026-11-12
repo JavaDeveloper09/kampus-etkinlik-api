@@ -99,3 +99,53 @@ main p a {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.detay {
+  display: grid;
+  gap: var(--bosluk-m);
+}
+
+.detay figure {
+  margin: 0;
+}
+
+.detay img {
+  border-radius: var(--kose);
+}
+
+.detay figcaption {
+  font-style: italic;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.kunye {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0 0 var(--bosluk-m);
+  padding: var(--bosluk-m);
+  background: white;
+  border: 1px solid hsl(var(--ton) 30% 85%);
+  border-radius: var(--kose);
+}
+
+.kunye dt {
+  font-weight: 600;
+}
+
+.kunye dd {
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .detay {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
