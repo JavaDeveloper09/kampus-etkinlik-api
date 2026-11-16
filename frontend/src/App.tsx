@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import type { CampusEvent, Category } from "./types/campus-event";
 import { events } from "./data/events";
-import { searchEvents, filterByCategory } from "./utils/filter-events";
+import {
+  searchEvents,
+  filterByCategory,
+  findEventById,
+} from "./utils/filter-events";
 
 type PageName = "home" | "events" | "detail" | "add" | "update";
 
@@ -41,7 +45,14 @@ function App() {
     setSelectedId(id);
   }
 
-  const title = titles[page];
+  const selected = selectedId ? findEventById(events, selectedId) : undefined;
+
+  const title =
+    page === "detail" && selected ? selected.title : titles[page];
+
+  useEffect(() => {
+    document.title = `Kampüs Etkinlikleri — ${title}`;
+  }, [title]);
 
   const upcoming = [...events]
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -162,7 +173,7 @@ function App() {
           </>
         )}
 
-        {page === "detail" && <p>Detay burada: {selectedId}</p>}
+        {page === "detail" && <p>Detay burada: {selected?.title}</p>}
         {(page === "add" || page === "update") && <p>Form burada</p>}
       </main>
 
