@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import type { CampusEvent } from "./types/campus-event";
+import { events } from "./data/events";
 
 type PageName = "home" | "events" | "detail" | "add" | "update";
 
@@ -17,6 +19,14 @@ const titles: Record<PageName, string> = {
   update: "Etkinlik Güncelle",
 };
 
+function formatDate(isoDate: string): string {
+  return new Date(isoDate + "T00:00").toLocaleDateString("tr-TR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 function App() {
   const [page, setPage] = useState<PageName>("home");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -27,6 +37,32 @@ function App() {
   }
 
   const title = titles[page];
+
+  const upcoming = [...events]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .slice(0, 2);
+
+  function renderCard(event: CampusEvent) {
+    return (
+      <article className="kart" key={event.id}>
+        <h3>{event.title}</h3>
+        <p>
+          {event.category} · <time dateTime={event.date}>{formatDate(event.date)}</time>,{" "}
+          {event.time} · {event.location}
+        </p>
+        <p>Kontenjan: {event.capacity} kişi</p>
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            go("detail", event.id);
+          }}
+        >
+          Detay →
+        </a>
+      </article>
+    );
+  }
 
   return (
     <>
@@ -50,7 +86,33 @@ function App() {
       </header>
 
       <main>
-        {page === "home" && <p>Ana sayfa burada</p>}
+        {page === "home" && (
+          <>
+            <section>
+              <h2>Hakkında</h2>
+              <p>
+                Fakültemizdeki seminer, atölye, söyleşi ve yarışmaları tek yerden
+                takip edebileceğin uygulama.
+              </p>
+            </section>
+
+            <section>
+              <h2>Yaklaşan Etkinlikler</h2>
+              <div className="kartlar">{upcoming.map(renderCard)}</div>
+              <p>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go("events");
+                  }}
+                >
+                  Tüm etkinlikleri gör →
+                </a>
+              </p>
+            </section>
+          </>
+        )}
         {page === "events" && <p>Etkinlik listesi burada</p>}
         {page === "detail" && <p>Detay burada: {selectedId}</p>}
         {(page === "add" || page === "update") && <p>Form burada</p>}
