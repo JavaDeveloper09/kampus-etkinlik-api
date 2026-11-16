@@ -19,7 +19,7 @@ const menu: { page: PageName; label: string }[] = [
 const titles: Record<PageName, string> = {
   home: "Kampüs Etkinlikleri",
   events: "Tüm Etkinlikler",
-  detail: "Etkinlik Detayı",
+  detail: "Etkinlik bulunamadı",
   add: "Etkinlik Ekle",
   update: "Etkinlik Güncelle",
 };
@@ -173,7 +173,76 @@ function App() {
           </>
         )}
 
-        {page === "detail" && <p>Detay burada: {selected?.title}</p>}
+        {page === "detail" && !selected && (
+          <div className="hata-kutusu">
+            <p>Aradığın etkinlik bulunamadı.</p>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                go("events");
+              }}
+            >
+              ← Listeye dön
+            </a>
+          </div>
+        )}
+
+        {page === "detail" && selected && (
+          <article className="detay">
+            {selected.image && (
+              <figure>
+                <img
+                  src={selected.image}
+                  alt={`${selected.title} etkinlik afişi`}
+                />
+                <figcaption>Şekil 1: {selected.title} afişi</figcaption>
+              </figure>
+            )}
+
+            <div className="detay-bilgi">
+              <dl className="kunye">
+                <dt>Tarih</dt>
+                <dd>
+                  <time dateTime={`${selected.date}T${selected.time}`}>
+                    {formatDate(selected.date)}, {selected.time}
+                  </time>
+                </dd>
+                <dt>Yer</dt>
+                <dd>{selected.location}</dd>
+                <dt>Kategori</dt>
+                <dd>{selected.category}</dd>
+                <dt>Kontenjan</dt>
+                <dd>{selected.capacity} kişi</dd>
+              </dl>
+
+              <p>{selected.description}</p>
+
+              <p>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go("update", selected.id);
+                  }}
+                >
+                  Bu etkinliği güncelle
+                </a>{" "}
+                ·{" "}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go("events");
+                  }}
+                >
+                  ← Listeye dön
+                </a>
+              </p>
+            </div>
+          </article>
+        )}
+
         {(page === "add" || page === "update") && <p>Form burada</p>}
       </main>
 
