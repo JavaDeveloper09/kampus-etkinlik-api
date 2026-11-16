@@ -1,32 +1,34 @@
-# React + TypeScript + Vite
+Canlı: https://kampus-etkinlik-api-sprint4.vercel.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# Kampüs Etkinlikleri · Sprint 4 (React + TypeScript)
 
-Currently, two official plugins are available:
+İbrahim Eren Yayla · 2416501088
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Sprint 3'teki 5 sayfalık site Vite, React ve TypeScript ile yeniden yazıldı. Sayfa geçişi Router yerine state ile yapılıyor.
 
-## React Compiler
+## Çalıştırma
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    npm install
+    npm run dev      # geliştirme: http://localhost:5173
+    npm run build    # tip kontrolü + dist/ klasörüne yayın sürümü
+    npm run preview  # dist/ önizlemesi
 
-## Expanding the Oxlint configuration
+## Dosyalar
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+| Dosya | Görevi |
+|---|---|
+| `package.json` | Proje adı, komutlar (dev, build, preview, lint) ve paket listesi. |
+| `package-lock.json` | Yüklenen paketlerin tam sürümleri; her bilgisayarda aynı kurulum. |
+| `node_modules/` | İndirilen paketler; GitHub'a gönderilmez. |
+| `tsconfig*.json` | TypeScript derleyici ayarları. |
+| `vite.config.ts` | Vite ayarları ve React eklentisi. |
+| `.oxlintrc.json` | Oxlint kod denetimi kuralları. |
+| `index.html` | Tek HTML dosyası; React'in çizdiği boş `div#root` burada. |
+| `public/` | Olduğu gibi kopyalanan dosyalar: afiş (`beyin.jpg`) ve favicon. |
+| `src/main.tsx` | React'i başlatır, `App` bileşenini `#root` içine çizer. |
+| `src/App.tsx` | 5 sayfanın hepsi; `page` ve `selectedId` state'iyle sayfa değişir. |
+| `src/App.css` | Sprint 3'ün CSS'i (ton 8, system-ui) ve aktif menü stili. |
+| `src/index.css` | Bu sprintte boş. |
+| `src/types/campus-event.ts` | `CampusEvent` arayüzü ve `Category` union tipi. |
+| `src/data/events.ts` | 6 etkinlik, `CampusEvent[]` tipinde. |
+| `src/utils/filter-events.ts` | Saf fonksiyonlar: `searchEvents`, `filterByCategory`, `findEventById`. |

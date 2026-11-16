@@ -29,3 +29,15 @@ Sayfalar tek bir veri dosyasından üretiliyor: `sprint3/` klasöründe.
 - `js/event-form.js`: ekleme ve güncelleme formunun doğrulaması; başarıda oluşan nesneyi gösterir
 
 Canlı adres: https://kampus-etkinlik-api-sprint3.vercel.app
+
+## Sprint 4: React ve TypeScript
+
+Sprint 3'teki site Vite + React + TypeScript ile yeniden yazıldı: `frontend/` klasöründe.
+
+- `src/types/campus-event.ts`: `CampusEvent` arayüzü ve 4 değerli `Category` tipi
+- `src/data/events.ts`: 6 etkinlik, `CampusEvent[]` tipinde
+- `src/utils/filter-events.ts`: saf fonksiyonlar; arama, kategori filtresi, id ile bulma
+- `src/App.tsx`: 5 sayfanın hepsi; sayfa geçişi ve arama `useState` ile, sekme başlığı `useEffect` ile
+- `src/App.css`: Sprint 3'ün CSS'i; afiş `public/beyin.jpg`
+
+Canlı adres: https://kampus-etkinlik-api-sprint4.vercel.app
