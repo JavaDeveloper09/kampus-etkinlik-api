@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { Event } from "../models/event-model.js";
-import { events } from "../data/events.js";
 
 // GET /events (?category=Seminer isteğe bağlı)
 export async function getEvents(req, res, next) {
@@ -31,28 +30,15 @@ export async function getEventById(req, res, next) {
   }
 }
 
-// POST /events  (Adım 7'de veritabanına geçecek)
-export function createEvent(req, res) {
-  const { title, category, capacity, date, time, location, description } =
-    req.body ?? {};
-
-  if (!title || !category || !date) {
-    return res.status(400).json({
-      error: { message: "title, category and date are required" },
-    });
+// POST /events
+export async function createEvent(req, res, next) {
+  try {
+    const event = await Event.create(req.body ?? {});
+    res.status(201).json(event);
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      return res.status(400).json({ error: { message: err.message } });
+    }
+    next(err);
   }
-
-  const newEvent = {
-    id: `event-${Date.now()}`,
-    title,
-    category,
-    date,
-    capacity: Number(capacity) || 0,
-    time: time ?? "",
-    location: location ?? "",
-    description: description ?? "",
-  };
-
-  events.push(newEvent);
-  res.status(201).json(newEvent);
 }
