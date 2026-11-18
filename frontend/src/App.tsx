@@ -10,13 +10,10 @@ import {
 } from "./utils/filter-events";
 import { formatDate } from "./utils/format-date";
 import Header from "./components/layout/Header";
+import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 
-const menu: { page: PageName; label: string }[] = [
-  { page: "home", label: "Ana Sayfa" },
-  { page: "events", label: "Etkinlikler" },
-  { page: "add", label: "Ekle" },
-];
+
 
 const titles: Record<PageName, string> = {
   home: "Kampüs Etkinlikleri",
@@ -80,21 +77,7 @@ function App() {
   return (
     <>
            <Header title={title}>
-        <nav>
-          {menu.map((item) => (
-            <a
-              key={item.page}
-              href="#"
-              aria-current={page === item.page ? "page" : undefined}
-              onClick={(e) => {
-                e.preventDefault();
-                go(item.page);
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+               <Navigation current={page} onNavigate={go} />
       </Header>
 
       <main>
