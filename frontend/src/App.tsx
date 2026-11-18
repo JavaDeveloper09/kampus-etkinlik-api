@@ -9,6 +9,7 @@ import {
   findEventById,
 } from "./utils/filter-events";
 import { formatDate } from "./utils/format-date";
+import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
 const menu: { page: PageName; label: string }[] = [
@@ -78,8 +79,7 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>{title}</h1>
+           <Header title={title}>
         <nav>
           {menu.map((item) => (
             <a
@@ -95,7 +95,7 @@ function App() {
             </a>
           ))}
         </nav>
-      </header>
+      </Header>
 
       <main>
         {page === "home" && (
@@ -310,9 +310,9 @@ function App() {
         )}
       </main>
 
-           <Footer />
+           <Footer /> 
     </>
   );
 }
 
-export default App;
+export default App; 
