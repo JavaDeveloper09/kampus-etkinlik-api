@@ -8,12 +8,12 @@ import {
   filterByCategory,
   findEventById,
 } from "./utils/filter-events";
-import { formatDate } from "./utils/format-date";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
 import EventList from "./components/events/EventList";
 import EventFilter from "./components/events/EventFilter";
+import EventDetail from "./components/events/EventDetail";
 
 const titles: Record<PageName, string> = {
   home: "Kampüs Etkinlikleri",
@@ -70,7 +70,7 @@ function App() {
 
             <section>
               <h2>Yaklaşan Etkinlikler</h2>
-                            <EventList
+              <EventList
                 events={upcoming}
                 onShowDetail={(id) => go("detail", id)}
               />
@@ -91,7 +91,7 @@ function App() {
 
         {page === "events" && (
           <>
-                       <EventFilter
+            <EventFilter
               searchText={searchText}
               category={category}
               categories={categories}
@@ -99,7 +99,7 @@ function App() {
               onCategoryChange={setCategory}
             />
 
-                        {filtered.length > 0 && (
+            {filtered.length > 0 && (
               <p id="sonuc">{filtered.length} etkinlik listeleniyor.</p>
             )}
 
@@ -127,58 +127,11 @@ function App() {
         )}
 
         {page === "detail" && selected && (
-          <article className="detay">
-            {selected.image && (
-              <figure>
-                <img
-                  src={selected.image}
-                  alt={`${selected.title} etkinlik afişi`}
-                />
-                <figcaption>Şekil 1: {selected.title} afişi</figcaption>
-              </figure>
-            )}
-
-            <div className="detay-bilgi">
-              <dl className="kunye">
-                <dt>Tarih</dt>
-                <dd>
-                  <time dateTime={`${selected.date}T${selected.time}`}>
-                    {formatDate(selected.date)}, {selected.time}
-                  </time>
-                </dd>
-                <dt>Yer</dt>
-                <dd>{selected.location}</dd>
-                <dt>Kategori</dt>
-                <dd>{selected.category}</dd>
-                <dt>Kontenjan</dt>
-                <dd>{selected.capacity} kişi</dd>
-              </dl>
-
-              <p>{selected.description}</p>
-
-              <p>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    go("update", selected.id);
-                  }}
-                >
-                  Bu etkinliği güncelle
-                </a>{" "}
-                ·{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    go("events");
-                  }}
-                >
-                  ← Listeye dön
-                </a>
-              </p>
-            </div>
-          </article>
+          <EventDetail
+            event={selected}
+            onBack={() => go("events")}
+            onEdit={(id) => go("update", id)}
+          />
         )}
 
         {(page === "add" || page === "update") && (
