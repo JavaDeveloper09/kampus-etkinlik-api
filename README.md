@@ -41,3 +41,13 @@ Sprint 3'teki site Vite + React + TypeScript ile yeniden yazıldı: `frontend/` 
 - `src/App.css`: Sprint 3'ün CSS'i; afiş `public/beyin.jpg`
 
 Canlı adres: https://kampus-etkinlik-api-sprint4.vercel.app
+
+## Sprint 8: MongoDB ve Mongoose
+
+Etkinlikler artık bellekteki dizide değil, MongoDB'de duruyor: `backend/` klasöründe. Adresler Sprint 7 ile aynı.
+
+- `src/config/database.js`: `MONGODB_URI` ile bağlanır; önce veritabanı, sonra sunucu
+- `src/models/event-model.js`: Event schema'sı (required, trim, enum, minlength, timestamps)
+- `src/data/seed-events.js` + `src/seed.js`: `npm run seed` ile 6 etkinlik; her çalıştırmada yine 6
+- `src/controllers/event-controller.js`: `find`, `findById`, `create`; geçersiz id 404, eksik veri 400
+- Bağlantı adresi sadece `backend/.env` içinde; örnek için `backend/.env.example`
