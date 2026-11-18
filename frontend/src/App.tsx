@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import type { CampusEvent, Category } from "./types/campus-event";
+import type { PageName } from "./types/page";
 import { events } from "./data/events";
 import {
   searchEvents,
   filterByCategory,
   findEventById,
 } from "./utils/filter-events";
-
-type PageName = "home" | "events" | "detail" | "add" | "update";
+import { formatDate } from "./utils/format-date";
 
 const menu: { page: PageName; label: string }[] = [
   { page: "home", label: "Ana Sayfa" },
@@ -25,14 +25,6 @@ const titles: Record<PageName, string> = {
 };
 
 const categories = [...new Set(events.map((e) => e.category))];
-
-function formatDate(isoDate: string): string {
-  return new Date(isoDate + "T00:00").toLocaleDateString("tr-TR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
 
 function App() {
   const [page, setPage] = useState<PageName>("home");
