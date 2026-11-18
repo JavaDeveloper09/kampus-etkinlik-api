@@ -12,7 +12,7 @@ import { formatDate } from "./utils/format-date";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
-import EventCard from "./components/events/EventCard";
+import EventList from "./components/events/EventList";
 
 const titles: Record<PageName, string> = {
   home: "Kampüs Etkinlikleri",
@@ -69,15 +69,10 @@ function App() {
 
             <section>
               <h2>Yaklaşan Etkinlikler</h2>
-              <div className="kartlar">
-                {upcoming.map((event) => (
-                  <EventCard
-                    key={event.id}
-                    event={event}
-                    onShowDetail={(id) => go("detail", id)}
-                  />
-                ))}
-              </div>
+                            <EventList
+                events={upcoming}
+                onShowDetail={(id) => go("detail", id)}
+              />
               <p>
                 <a
                   href="#"
@@ -123,21 +118,15 @@ function App() {
               </div>
             </form>
 
-            <p id="sonuc">
-              {filtered.length === 0
-                ? "Aramana uyan etkinlik bulunamadı."
-                : `${filtered.length} etkinlik listeleniyor.`}
-            </p>
+                        {filtered.length > 0 && (
+              <p id="sonuc">{filtered.length} etkinlik listeleniyor.</p>
+            )}
 
-            <section className="kartlar">
-              {filtered.map((event) => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  onShowDetail={(id) => go("detail", id)}
-                />
-              ))}
-            </section>
+            <EventList
+              events={filtered}
+              onShowDetail={(id) => go("detail", id)}
+              emptyText="Aramana uyan etkinlik bulunamadı."
+            />
           </>
         )}
 
