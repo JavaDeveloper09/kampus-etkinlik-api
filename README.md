@@ -42,6 +42,18 @@ Sprint 3'teki site Vite + React + TypeScript ile yeniden yazıldı: `frontend/` 
 
 Canlı adres: https://kampus-etkinlik-api-sprint4.vercel.app
 
+## Sprint 5: React Bileşenleri
+
+Sprint 4'teki tek `App.tsx` bileşenlere bölündü: `frontend/` klasöründe. Ekran Sprint 4 ile aynı.
+
+- `src/components/layout/`: Header, Navigation, Footer
+- `src/components/events/`: EventCard, EventList, EventFilter, EventDetail
+- `src/components/forms/`: EventForm
+- Veri props ile aşağı, olaylar callback ile yukarı; state App'te (lifting state)
+- `src/types/page.ts` ve `src/utils/format-date.ts`: bileşenlerin ortak kullandığı parçalar
+
+Canlı adres: https://kampus-etkinlik-api-sprint5.vercel.app
+
 ## Sprint 8: MongoDB ve Mongoose
 
 Etkinlikler artık bellekteki dizide değil, MongoDB'de duruyor: `backend/` klasöründe. Adresler Sprint 7 ile aynı.

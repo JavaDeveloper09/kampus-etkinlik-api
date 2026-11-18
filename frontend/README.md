@@ -1,10 +1,12 @@
-Canlı: https://kampus-etkinlik-api-sprint4.vercel.app
+Canlı: https://kampus-etkinlik-api-sprint5.vercel.app
 
-# Kampüs Etkinlikleri · Sprint 4 (React + TypeScript)
+# Kampüs Etkinlikleri · Sprint 5 (React Bileşenleri)
 
 İbrahim Eren Yayla · 2416501088
 
-Sprint 3'teki 5 sayfalık site Vite, React ve TypeScript ile yeniden yazıldı. Sayfa geçişi Router yerine state ile yapılıyor.
+Sprint 4'teki tek büyük `App.tsx` bileşenlere bölündü. Her bileşen kendi dosyasında, veriyi props ile alıyor, olayları callback ile App'e bildiriyor. State App'te duruyor. Ekran Sprint 4 ile birebir aynı.
+
+Sprint 4: https://kampus-etkinlik-api-sprint4.vercel.app
 
 ## Çalıştırma
 
@@ -12,8 +14,38 @@ Sprint 3'teki 5 sayfalık site Vite, React ve TypeScript ile yeniden yazıldı. 
     npm run dev      # geliştirme: http://localhost:5173
     npm run build    # tip kontrolü + dist/ klasörüne yayın sürümü
     npm run preview  # dist/ önizlemesi
+    npm run lint     # Oxlint kod denetimi
 
-## Dosyalar
+## Bileşen ağacı
+
+    App  (state: page, selectedId, searchText, category)
+    ├── Header       title, text?, children
+    │   └── Navigation   current, onNavigate
+    ├── main
+    │   ├── EventList    events, onShowDetail, emptyText?
+    │   │   └── EventCard    event, onShowDetail
+    │   ├── EventFilter  searchText, category, categories, onSearchChange, onCategoryChange
+    │   ├── EventDetail  event, onBack, onEdit
+    │   └── EventForm    onSubmit
+    └── Footer       (props yok)
+
+Veri props ile aşağı iner, olaylar callback ile yukarı çıkar. Arama metnine hem EventFilter hem EventList ihtiyaç duyduğu için state ortak üst bileşen olan App'te durur (lifting state).
+
+## Bileşenler
+
+| Dosya | Görevi |
+|---|---|
+| `src/App.tsx` | State, hesaplanan değerler, `go()`; hangi sayfada hangi bileşen |
+| `src/components/layout/Header.tsx` | Kırmızı bant ve başlık; menüyü `children` olarak içine alır |
+| `src/components/layout/Navigation.tsx` | Menü; tıklamayı `onNavigate` ile bildirir |
+| `src/components/layout/Footer.tsx` | Ad, numara, yıl |
+| `src/components/events/EventCard.tsx` | Tek kart; detay için `onShowDetail(id)` |
+| `src/components/events/EventList.tsx` | Kart listesi, `key={event.id}`; boşsa mesaj |
+| `src/components/events/EventFilter.tsx` | Arama ve kategori kutuları; değerler App'ten |
+| `src/components/events/EventDetail.tsx` | Detay, afiş sadece varsa; `onBack`, `onEdit` |
+| `src/components/forms/EventForm.tsx` | Ekle/Güncelle formu; gönderimi `onSubmit` ile bildirir |
+
+## Diğer dosyalar
 
 | Dosya | Görevi |
 |---|---|
@@ -26,9 +58,10 @@ Sprint 3'teki 5 sayfalık site Vite, React ve TypeScript ile yeniden yazıldı. 
 | `index.html` | Tek HTML dosyası; React'in çizdiği boş `div#root` burada. |
 | `public/` | Olduğu gibi kopyalanan dosyalar: afiş (`beyin.jpg`) ve favicon. |
 | `src/main.tsx` | React'i başlatır, `App` bileşenini `#root` içine çizer. |
-| `src/App.tsx` | 5 sayfanın hepsi; `page` ve `selectedId` state'iyle sayfa değişir. |
 | `src/App.css` | Sprint 3'ün CSS'i (ton 8, system-ui) ve aktif menü stili. |
-| `src/index.css` | Bu sprintte boş. |
+| `src/index.css` | Boş. |
 | `src/types/campus-event.ts` | `CampusEvent` arayüzü ve `Category` union tipi. |
+| `src/types/page.ts` | `PageName` tipi; Navigation ve App kullanır. |
 | `src/data/events.ts` | 6 etkinlik, `CampusEvent[]` tipinde. |
 | `src/utils/filter-events.ts` | Saf fonksiyonlar: `searchEvents`, `filterByCategory`, `findEventById`. |
+| `src/utils/format-date.ts` | Tarihi "12 Ekim 2026" biçimine çevirir; EventCard ve EventDetail kullanır. |
