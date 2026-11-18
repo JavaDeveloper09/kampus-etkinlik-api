@@ -9,6 +9,7 @@ import {
   findEventById,
 } from "./utils/filter-events";
 import { formatDate } from "./utils/format-date";
+import Footer from "./components/layout/Footer";
 
 const menu: { page: PageName; label: string }[] = [
   { page: "home", label: "Ana Sayfa" },
@@ -309,9 +310,7 @@ function App() {
         )}
       </main>
 
-      <footer>
-        <p>İbrahim Eren Yayla · 2416501088 · 2026</p>
-      </footer>
+           <Footer />
     </>
   );
 }
