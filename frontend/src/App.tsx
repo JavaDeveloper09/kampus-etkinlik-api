@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import type { CampusEvent, Category } from "./types/campus-event";
+import type { Category } from "./types/campus-event";
 import type { PageName } from "./types/page";
 import { events } from "./data/events";
 import {
@@ -12,8 +12,7 @@ import { formatDate } from "./utils/format-date";
 import Header from "./components/layout/Header";
 import Navigation from "./components/layout/Navigation";
 import Footer from "./components/layout/Footer";
-
-
+import EventCard from "./components/events/EventCard";
 
 const titles: Record<PageName, string> = {
   home: "Kampüs Etkinlikleri",
@@ -51,33 +50,10 @@ function App() {
 
   const filtered = filterByCategory(searchEvents(events, searchText), category);
 
-  function renderCard(event: CampusEvent) {
-    return (
-      <article className="kart" key={event.id}>
-        <h3>{event.title}</h3>
-        <p>
-          {event.category} ·{" "}
-          <time dateTime={event.date}>{formatDate(event.date)}</time>,{" "}
-          {event.time} · {event.location}
-        </p>
-        <p>Kontenjan: {event.capacity} kişi</p>
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            go("detail", event.id);
-          }}
-        >
-          Detay →
-        </a>
-      </article>
-    );
-  }
-
   return (
     <>
-           <Header title={title}>
-               <Navigation current={page} onNavigate={go} />
+      <Header title={title}>
+        <Navigation current={page} onNavigate={go} />
       </Header>
 
       <main>
@@ -93,7 +69,15 @@ function App() {
 
             <section>
               <h2>Yaklaşan Etkinlikler</h2>
-              <div className="kartlar">{upcoming.map(renderCard)}</div>
+              <div className="kartlar">
+                {upcoming.map((event) => (
+                  <EventCard
+                    key={event.id}
+                    event={event}
+                    onShowDetail={(id) => go("detail", id)}
+                  />
+                ))}
+              </div>
               <p>
                 <a
                   href="#"
@@ -145,7 +129,15 @@ function App() {
                 : `${filtered.length} etkinlik listeleniyor.`}
             </p>
 
-            <section className="kartlar">{filtered.map(renderCard)}</section>
+            <section className="kartlar">
+              {filtered.map((event) => (
+                <EventCard
+                  key={event.id}
+                  event={event}
+                  onShowDetail={(id) => go("detail", id)}
+                />
+              ))}
+            </section>
           </>
         )}
 
@@ -293,9 +285,9 @@ function App() {
         )}
       </main>
 
-           <Footer /> 
+      <Footer />
     </>
   );
 }
 
-export default App; 
+export default App;
