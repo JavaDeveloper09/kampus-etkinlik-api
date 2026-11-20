@@ -11,3 +11,14 @@ export interface CampusEvent {
   description: string;
   image?: string; // isteğe bağlı: afiş yolu, örn. "/beyin.jpg"
 }
+
+// Formdaki değerler: id yok; kategori boş olabilir; kontenjan metin
+export interface EventFormData {
+  title: string;
+  category: Category | "";
+  date: string;
+  time: string;
+  location: string;
+  capacity: string;
+  description: string;
+}
