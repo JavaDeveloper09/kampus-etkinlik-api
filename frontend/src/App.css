@@ -285,3 +285,85 @@ nav a[aria-current="page"] {
   border-radius: 6px;
   text-decoration: none;
 }
+/* Sprint 6: buton görünümlü link */
+.buton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: white;
+  background: var(--renk-ana);
+  border-radius: var(--kose);
+  text-decoration: none;
+}
+
+.buton:hover {
+  filter: brightness(1.1);
+}
+
+/* Sprint 6: yönetim tablosu */
+.tablo {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.tablo th,
+.tablo td {
+  padding: 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid hsl(var(--ton) 30% 85%);
+}
+
+.tablo th {
+  background: var(--renk-ana);
+  color: white;
+}
+
+.islemler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.buton-sil {
+  background: var(--renk-hata);
+  padding: 0.5rem 1rem;
+}
+
+/* Telefonda her satır bir kart */
+@media (max-width: 699px) {
+  .tablo thead {
+    display: none;
+  }
+
+  .tablo,
+  .tablo tbody,
+  .tablo tr,
+  .tablo td {
+    display: block;
+  }
+
+  .tablo {
+    background: transparent;
+  }
+
+  .tablo tr {
+    background: white;
+    border: 1px solid hsl(var(--ton) 30% 85%);
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+    margin-bottom: var(--bosluk-m);
+  }
+
+  .tablo td {
+    border: none;
+    padding: 0.25rem 0;
+  }
+
+  .tablo td[data-baslik]::before {
+    content: attr(data-baslik) ": ";
+    font-weight: 700;
+  }
+}
