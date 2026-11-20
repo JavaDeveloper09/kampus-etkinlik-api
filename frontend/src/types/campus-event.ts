@@ -22,3 +22,6 @@ export interface EventFormData {
   capacity: string;
   description: string;
 }
+
+// Her alana en fazla bir hata mesajı
+export type EventFormErrors = Partial<Record<keyof EventFormData, string>>;
