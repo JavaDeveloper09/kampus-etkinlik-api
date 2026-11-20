@@ -54,6 +54,17 @@ Sprint 4'teki tek `App.tsx` bileşenlere bölündü: `frontend/` klasöründe. E
 
 Canlı adres: https://kampus-etkinlik-api-sprint5.vercel.app
 
+## Sprint 6: Router, Context ve Yönetim
+
+Uygulama gerçek adreslere kavuştu: `frontend/` klasöründe. 10 route, EventsContext ile ortak liste, yönetim panelinde ekle / güncelle / onaylı sil, doğrulamalı formlar.
+
+- `src/pages/`: 10 sayfa (Ana Sayfa, Etkinlikler, Detay, Yönetim, Ekle, Güncelle, Giriş, Kayıt, Şifremi Unuttum, Bulunamadı)
+- `src/context/EventsContext.tsx`: liste ve üç fonksiyon; sayfalar `useEvents()` ile okur
+- `src/utils/validate-event.ts`: etkinlik formu kuralları
+- Route listesi ve kurulum: `frontend/README.md`
+
+Canlı adres: https://ibrahimerenyayla-frontend2.vercel.app
+
 ## Sprint 8: MongoDB ve Mongoose
 
 Etkinlikler artık bellekteki dizide değil, MongoDB'de duruyor: `backend/` klasöründe. Adresler Sprint 7 ile aynı.
