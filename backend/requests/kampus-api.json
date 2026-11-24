@@ -2,145 +2,142 @@
   "info": {
     "_postman_id": "e75657f5-c613-4083-9a65-1acaf9ea8525",
     "name": "Kampüs API",
-    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "60116483",
-    "_collection_link": "https://go.postman.co/collection/60116483-e75657f5-c613-4083-9a65-1acaf9ea8525?source=collection_link"
+    "description": "Kampüs Etkinlik API · İbrahim Eren Yayla · 2416501088",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "eventId", "value": "" }
+  ],
   "item": [
     {
       "name": "1 Health",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 OK', () => pm.response.to.have.status(200));",
+              "pm.test('student numarası', () => pm.expect(pm.response.json().student).to.eql('2416501088'));"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "http://localhost:3000/health",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "health"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/health"
+      }
     },
     {
       "name": "2 Etkinlik listesi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 OK', () => pm.response.to.have.status(200));",
+              "const list = pm.response.json();",
+              "pm.test('liste boş değil', () => pm.expect(list.length).to.be.above(0));",
+              "if (list.length > 0) pm.collectionVariables.set('eventId', list[0]._id);"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "http://localhost:3000/events",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "events"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/events"
+      }
     },
     {
       "name": "3 Tek etkinlik",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('200 OK', () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "http://localhost:3000/events/6afd4f2b3dadad0ef080859e",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "events",
-            "6afd4f2b3dadad0ef080859e"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/events/{{eventId}}"
+      }
     },
     {
       "name": "4 Olmayan etkinlik",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('404 Not Found', () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "GET",
         "header": [],
-        "url": {
-          "raw": "http://localhost:3000/events/yok",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "events",
-            "yok"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/events/yok"
+      }
     },
     {
       "name": "5 Etkinlik oluştur",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('201 Created', () => pm.response.to.have.status(201));",
+              "pm.test('_id var', () => pm.expect(pm.response.json()._id).to.be.a('string'));"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"title\": \"Satranç Turnuvası\",\r\n  \"category\": \"Yarışma\",\r\n  \"date\": \"2026-12-05\",\r\n  \"time\": \"13:00\",\r\n  \"location\": \"Kütüphane Etüt Salonu\",\r\n  \"capacity\": 32,\r\n  \"description\": \"Hızlı satranç formatında eleme usulü turnuva.\"\r\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          "raw": "{\n  \"title\": \"Satranç Turnuvası\",\n  \"category\": \"Yarışma\",\n  \"date\": \"2026-12-05\",\n  \"time\": \"13:00\",\n  \"location\": \"Kütüphane Etüt Salonu\",\n  \"capacity\": 32,\n  \"description\": \"Hızlı satranç formatında eleme usulü turnuva.\"\n}",
+          "options": { "raw": { "language": "json" } }
         },
-        "url": {
-          "raw": "http://localhost:3000/events",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "events"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/events"
+      }
     },
     {
       "name": "6 Eksik etkinlik",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('400 Bad Request', () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
         "body": {
           "mode": "raw",
-          "raw": "   {\r\n     \"title\": \"Eksik Etkinlik\"\r\n   }",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
+          "raw": "{\n  \"title\": \"Eksik Etkinlik\"\n}",
+          "options": { "raw": { "language": "json" } }
         },
-        "url": {
-          "raw": "http://localhost:3000/events",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "3000",
-          "path": [
-            "events"
-          ]
-        }
-      },
-      "response": []
+        "url": "{{baseUrl}}/events"
+      }
     }
   ]
 }
