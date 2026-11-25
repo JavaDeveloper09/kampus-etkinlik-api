@@ -109,7 +109,7 @@
         "header": [{ "key": "Content-Type", "value": "application/json" }],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Satranç Turnuvası\",\n  \"category\": \"Yarışma\",\n  \"date\": \"2026-12-05\",\n  \"time\": \"13:00\",\n  \"location\": \"Kütüphane Etüt Salonu\",\n  \"capacity\": 32,\n  \"description\": \"Hızlı satranç formatında eleme usulü turnuva.\"\n}",
+          "raw": "{\n  \"title\": \"Satranç Turnuvası\",\n  \"category\": \"Yarışma\",\n  \"date\": \"05-12-2026\",\n  \"time\": \"13:00\",\n  \"location\": \"Kütüphane Etüt Salonu\",\n  \"capacity\": 32,\n  \"description\": \"Hızlı satranç formatında eleme usulü turnuva.\"\n}",
           "options": { "raw": { "language": "json" } }
         },
         "url": "{{baseUrl}}/events"
