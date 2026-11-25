@@ -2,7 +2,7 @@ export const seedEvents = [
   {
     title: "Temel Algoritma Öğrenimi",
     category: "Seminer",
-    date: "2026-10-12",
+    date: "12-10-2026", // geçmiş
     time: "14:00",
     location: "B Blok Konferans Salonu",
     capacity: 100,
@@ -11,7 +11,7 @@ export const seedEvents = [
   {
     title: "Spor Bilimleri",
     category: "Yarışma",
-    date: "2026-10-20",
+    date: "20-10-2026", // geçmiş
     time: "10:00",
     location: "Halı Saha",
     capacity: 20,
@@ -20,7 +20,7 @@ export const seedEvents = [
   {
     title: "Okçuluk",
     category: "Yarışma",
-    date: "2026-10-27",
+    date: "04-12-2026",
     time: "13:00",
     location: "A Blok Spor Salonu",
     capacity: 50,
@@ -29,7 +29,7 @@ export const seedEvents = [
   {
     title: "Yatırımcılardan Borsada Kazanç Sağlama Yöntemleri",
     category: "Seminer",
-    date: "2026-11-03",
+    date: "11-12-2026",
     time: "15:00",
     location: "Konferans Salonu",
     capacity: 250,
@@ -38,7 +38,7 @@ export const seedEvents = [
   {
     title: "Yapay Zeka Eğitimi",
     category: "Söyleşi",
-    date: "2026-11-10",
+    date: "18-12-2026",
     time: "09:30",
     location: "Bilgisayar Laboratuvarı 3",
     capacity: 40,
@@ -47,7 +47,7 @@ export const seedEvents = [
   {
     title: "Uzay Araştırmaları Semineri",
     category: "Seminer",
-    date: "2026-11-17",
+    date: "08-01-2027",
     time: "10:00",
     location: "C Blok Konferans Salonu",
     capacity: 150,
