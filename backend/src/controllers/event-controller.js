@@ -12,12 +12,17 @@ function isBadData(err) {
   return err.name === "ValidationError" || err.name === "CastError";
 }
 
-// GET /events (?category=Seminer isteğe bağlı)
+// GET /events (?search= ve ?category= isteğe bağlı)
 export async function getEvents(req, res, next) {
   try {
-    const filter = req.query.category
-      ? { category: req.query.category }
-      : {};
+    const { category, search } = req.query;
+    const filter = {};
+    if (category) filter.category = category;
+    if (search) {
+      // ( * ? gibi işaretler aramayı bozmasın
+      const guvenli = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      filter.title = { $regex: guvenli, $options: "i" };
+    }
     const list = await Event.find(filter).sort({ date: 1 });
     res.json(list);
   } catch (err) {
