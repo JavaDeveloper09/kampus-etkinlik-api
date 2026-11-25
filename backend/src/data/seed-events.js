@@ -35,14 +35,14 @@ export const seedEvents = [
     capacity: 250,
     description: "Yatırımcıların borsada kullandığı yöntemler anlatılıyor.",
   },
-  {
-    title: "Yapay Zeka Eğitimi",
-    category: "Söyleşi",
+   {
+    title: "Yapay Zeka Atölyesi",
+    category: "Atölye",
     date: "18-12-2026",
     time: "09:30",
     location: "Bilgisayar Laboratuvarı 3",
     capacity: 40,
-    description: "Yapay zeka pratikleri üzerine söyleşi.",
+    description: "Yapay zeka pratikleri üzerine uygulamalı atölye.",
   },
   {
     title: "Uzay Araştırmaları Semineri",
